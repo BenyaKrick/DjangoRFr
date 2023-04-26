@@ -1,0 +1,37 @@
+version: '3'
+services:
+  postgres:
+    container_name: db
+    image: postgres:14.7
+    restart: always
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: 'myapi'
+      POSTGRES_USER: 'benya'
+      POSTGRES_PASSWORD: '1111'
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    networks:
+      - main
+
+  django:
+    container_name: blog
+    build: .
+    restart: always
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8001"
+    ports:
+      - "8001:8001"
+    depends_on:
+      - postgres
+    networks:
+      - main
+    volumes:
+      - .:/opt/app
+
+
+volumes:
+  pg-data:
+
+networks:
+  main:

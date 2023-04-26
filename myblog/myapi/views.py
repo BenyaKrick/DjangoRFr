@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from .serializers import PostSerializer, CategorySerializer, CommentSerializer
 from .models import Post, Category, Comments
-from rest_framework.mixins import CreateModelMixin
+from rest_framework.mixins import CreateModelMixin, ListModelMixin
 from rest_framework.viewsets import GenericViewSet
 
 
@@ -19,11 +19,10 @@ class PostViewSet(viewsets.ModelViewSet):
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-#     # permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
 
-class CommentViewSet(viewsets.ModelViewSet):
+class CommentViewSet(ListModelMixin, CreateModelMixin, viewsets.GenericViewSet):
     queryset = Comments.objects.all()
-    serializer_class = CommentSerializer
-    http_method_names = ['get', 'post']  # разрешенные методы так же (viewsets.ReadOnlyModelViewSet) только чтение
+    serializer_class = CommentSerializer  # разрешенные методы так же (viewsets.ReadOnlyModelViewSet) только чтение
     permission_classes = (IsAuthenticatedOrReadOnly,)
