@@ -3,7 +3,7 @@ from django.urls import reverse
 
 
 class Category(models.Model):
-    title = models.CharField(max_length=80, db_index=True, verbose_name="Рубрика")
+    title = models.CharField(max_length=80, db_index=True, verbose_name="Рубрика", unique=True)
 
     def __str__(self):
         return f'{self.title}'

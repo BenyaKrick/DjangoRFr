@@ -9,9 +9,5 @@ router.register(r'blog', views.PostViewSet)
 router.register(r'cat', views.CategoryViewSet)
 router.register(r'comm', views.CommentViewSet)
 
-Spectacular = [
-    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
-    path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
-    path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
-]
-urlpatterns = router.urls + Spectacular
+
+urlpatterns = router.urls
