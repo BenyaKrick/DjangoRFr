@@ -30,15 +30,15 @@ services:
     volumes:
       - .:/opt/app
 
-#  nginx:
-#    container_name: nginx
-#    image: nginx:latest
-#    depends_on:
-#      - django
-#    ports:
-#      - "80:80"
-#    volumes:
-#      - ./nginx/local.conf:/etc/nginx/nginx.conf
+  nginx:
+    container_name: nginx
+    image: nginx:latest
+    depends_on:
+      - django
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/local.conf:/etc/nginx/nginx.conf
 
 
 volumes:
