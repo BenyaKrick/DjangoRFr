@@ -20,7 +20,7 @@ inflection==0.5.1
 iniconfig==2.0.0
 jsonschema==4.17.3
 gunicorn
-psycopg2
+psycopg2-binary==2.9.6
 Markdown==3.4.3
 oauthlib==3.2.2
 packaging==23.1

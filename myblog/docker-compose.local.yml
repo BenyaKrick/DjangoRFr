@@ -19,7 +19,7 @@ services:
     container_name: blog
     build: .
     restart: always
-    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8001 && python manage.py collectstatic && gunicorn -"
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && gunicorn myblog.wsgi --bind 0.0.0.0:8001"
 
     ports:
       - "8001:8001"
@@ -30,13 +30,15 @@ services:
     volumes:
       - .:/opt/app
 
-  nginx:
-    container_name: nginx
-    image: nginx:latest
-    depends_on:
-      - django
-    ports:
-      - "8003:8001"
+#  nginx:
+#    container_name: nginx
+#    image: nginx:latest
+#    depends_on:
+#      - django
+#    ports:
+#      - "80:80"
+#    volumes:
+#      - ./nginx/local.conf:/etc/nginx/nginx.conf
 
 
 volumes:
