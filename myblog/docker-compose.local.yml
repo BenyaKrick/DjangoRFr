@@ -35,9 +35,7 @@ services:
     depends_on:
       - django
     ports:
-      - "8080:80"
-    volumes:
-      - /opt/app:/usr/share/nginx/
+      - "80:8001"
 
 
 volumes:
