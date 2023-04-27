@@ -38,6 +38,8 @@ services:
       - django
     ports:
       - "80:80"
+    networks:
+      - main
     volumes:
       - ./nginx/:/etc/nginx/conf.d/
 
