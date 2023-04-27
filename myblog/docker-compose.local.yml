@@ -19,7 +19,8 @@ services:
     container_name: blog
     build: .
     restart: always
-    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8001 && gunicorn -"
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8001 && python manage.py collectstatic && gunicorn -"
+
     ports:
       - "8001:8001"
     depends_on:
@@ -35,7 +36,7 @@ services:
     depends_on:
       - django
     ports:
-      - "80:8001"
+      - "8003:8001"
 
 
 volumes:
