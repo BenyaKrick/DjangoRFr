@@ -37,7 +37,7 @@ services:
     depends_on:
       - django
     ports:
-      - "80:80"
+      - "1337:80"
     networks:
       - main
     volumes:
