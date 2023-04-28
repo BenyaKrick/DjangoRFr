@@ -27,8 +27,7 @@ services:
       - main
     volumes:
       - .:/opt/app
-      - static_volume:/home/opt/app/myblog/static
-      - media_volume:/home/opt/app/myblog/media
+
 
 
   nginx:
@@ -42,12 +41,14 @@ services:
       - main
     volumes:
       - ./nginx/:/etc/nginx/conf.d/
+      - ./static/:/opt/app/static
+      - ./media/:/opt/app//media
 
 
 volumes:
   pg-data:
-  static_volume:
-  media_volume:
+  static:
+
 
 networks:
   main:
