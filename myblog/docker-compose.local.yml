@@ -30,19 +30,19 @@ services:
 
 
 
-  nginx:
-    container_name: nginx
-    image: nginx:latest
-    depends_on:
-      - web
-    ports:
-      - "80:80"
-    networks:
-      - main
-    volumes:
-      - ./nginx/:/etc/nginx/conf.d/
-      - ./static/:/opt/app/static
-      - ./media/:/opt/app//media
+#  nginx:
+#    container_name: nginx
+#    image: nginx:latest
+#    depends_on:
+#      - web
+#    ports:
+#      - "80:80"
+#    networks:
+#      - main
+#    volumes:
+#      - ./nginx/:/etc/nginx/conf.d/
+#      - ./static/:/opt/app/static
+#      - ./media/:/opt/app//media
 
 
 volumes:
@@ -52,3 +52,4 @@ volumes:
 
 networks:
   main:
+
