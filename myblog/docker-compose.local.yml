@@ -7,10 +7,8 @@ services:
     restart: always
     ports:
       - "5433:5432"
-    environment:
-      POSTGRES_DB: 'myapi'
-      POSTGRES_USER: 'benya'
-      POSTGRES_PASSWORD: '1111'
+    env_file:
+      - ./mybLog/.env
     volumes:
       - pg-data:/var/lib/postgresql/data
     networks:
