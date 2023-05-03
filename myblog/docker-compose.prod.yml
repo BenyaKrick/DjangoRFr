@@ -27,7 +27,6 @@ services:
       - .:/opt/app
 
 
-
   nginx:
     container_name: nginx
     image: nginx:latest
@@ -55,4 +54,4 @@ services:
 
 volumes:
   pg-data:
-  static:
+
