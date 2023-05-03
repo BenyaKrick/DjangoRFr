@@ -20,9 +20,11 @@ services:
     container_name: blog
     build: .
     restart: always
-    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic --noinput && gunicorn -w 5 --bind 0.0.0.0:8001 myblog.wsgi"
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8001"
     depends_on:
       - postgres
+    ports:
+      - "8001:8001"
     networks:
       - main
     volumes:
